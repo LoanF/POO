@@ -1,0 +1,92 @@
+﻿<Window x:Name="DigitalFishing" x:Class="DigitalFishing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DigitalFishing"
+        mc:Ignorable="d"
+        Title="Digital Fishing - Gestion Pigistes" Height="600" Width="750">
+    <Grid Margin="0,0,3.6,0.2">
+
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="710">
+            <TabItem Header="Contrats">
+                <Grid Background="#FFE5E5E5" VerticalAlignment="Top" Height="500">
+                    <DataGrid x:Name="dtgContrat" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="255" AutoGenerateColumns="True" ItemsSource="{Binding}" SelectionChanged="dtgContrat_SelectionChanged" />
+                    <TextBox x:Name="txtNumContrat" HorizontalAlignment="Left" Height="23" Margin="346,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="14.667" FontWeight="Bold" IsEnabled="False"/>
+                    <Label x:Name="lblNumContrat" Content="Numéro de contrat" HorizontalAlignment="Left" Margin="346,15,0,0" VerticalAlignment="Top" Width="115"/>
+                    <ComboBox x:Name="cboEtatContrat" HorizontalAlignment="Left" Margin="540,40,0,0" VerticalAlignment="Top" Width="155">
+                        <ComboBoxItem Content="Contrat à récupérer" Background="#FFEF4242"/>
+                        <ComboBoxItem Content="Paiment à faire" Background="#FFD09F29"/>
+                        <ComboBoxItem Content="Paiement effectué" Background="#FF22B329"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cboPigiste" HorizontalAlignment="Left" Margin="540,92,0,0" VerticalAlignment="Top" Width="155"/>
+                    <TextBox x:Name="txtMontantBrutContrat" HorizontalAlignment="Left" Height="23" Margin="346,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="txtMontantBrutContrat_TextChanged"/>
+                    <ComboBox x:Name="cboMagazine" HorizontalAlignment="Left" Margin="540,146,0,0" VerticalAlignment="Top" Width="155"/>
+                    <CheckBox x:Name="chkAgessa" Content="Déclaration AGESSA" HorizontalAlignment="Left" Margin="540,216,0,0" VerticalAlignment="Top" Height="20" Width="150"/>
+                    <Button x:Name="btnModifierContrat" Content="Modifier" HorizontalAlignment="Left" Margin="540,296,0,0" VerticalAlignment="Top" Width="155" Click="btnModifierContrat_Click"/>
+                    <Button x:Name="btnAjouterContrat" Content="Ajouter" HorizontalAlignment="Left" Margin="540,272,0,0" VerticalAlignment="Top" Width="155" Click="btnAjouterContrat_Click"/>
+                    <Button x:Name="btnSupprimerContrat" Content="Supprimer" HorizontalAlignment="Left" Margin="540,321,0,0" VerticalAlignment="Top" Width="155" Height="20" Click="btnSupprimerContrat_Click"/>
+                    <Label x:Name="lblMontantBrutContrat" Content="Montant Brut" HorizontalAlignment="Left" Margin="346,121,0,0" VerticalAlignment="Top" Width="115"/>
+                    <Label x:Name="lblMontantNetContrat" Content="Montant Net" HorizontalAlignment="Left" Margin="346,175,0,0" VerticalAlignment="Top" Width="115"/>
+                    <Label x:Name="lblEtatContrat" Content="Etat du contrat" HorizontalAlignment="Left" Margin="540,15,0,0" VerticalAlignment="Top" Width="115"/>
+                    <Label x:Name="lblPigisteContrat" Content="Pigiste" HorizontalAlignment="Left" Margin="540,66,0,0" VerticalAlignment="Top" Width="115"/>
+                    <Label x:Name="lblMagazineContrat" Content="Magazine" HorizontalAlignment="Left" Margin="540,120,0,0" VerticalAlignment="Top" Width="115"/>
+                    <CheckBox x:Name="chkFacture" Content="Facture" HorizontalAlignment="Left" Margin="540,191,0,0" VerticalAlignment="Top" Height="20" Width="155"/>
+                    <ComboBox x:Name="cboFiltreMagazine" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.218,0.313"/>
+                    <ComboBox x:Name="cboFiltrePigiste" HorizontalAlignment="Left" Margin="135,455,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="txtLettreAccordContrat" HorizontalAlignment="Left" Height="23" Margin="346,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblMontantBrutContrat_Copy" Content="Référence Lettre Accord" HorizontalAlignment="Left" Margin="346,66,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtMontantNetContrat" HorizontalAlignment="Left" Height="23" Margin="346,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" IsEnabled="False"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Magazine">
+                <Grid Background="#FFE5E5E5" VerticalAlignment="Top" Height="500">
+                    <DataGrid x:Name="dtgMagazine" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="255" AutoGenerateColumns="True" ItemsSource="{Binding}" SelectionChanged="dtgMagazine_SelectionChanged"/>
+                    <TextBox x:Name="txtNumMagazine" HorizontalAlignment="Left" Height="23" Margin="346,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="14.667" FontWeight="Bold" IsEnabled="False"/>
+                    <Label x:Name="lblNumMagazine" Content="Numéro de magazine" HorizontalAlignment="Left" Margin="346,15,0,0" VerticalAlignment="Top" Width="150"/>
+                    <DatePicker x:Name="dtpBouclageMagazine" HorizontalAlignment="Left" Margin="524,39,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="dtpParutionMagazine" HorizontalAlignment="Left" Margin="524,107,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblBouclageMagazine" Content="Date de bouclage" HorizontalAlignment="Left" Margin="524,13,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblParutionMagazine" Content="Date de parution" HorizontalAlignment="Left" Margin="524,81,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtBudgetMagazine" HorizontalAlignment="Left" Height="23" Margin="346,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblBudgetMagazine" Content="Budget" HorizontalAlignment="Left" Margin="346,81,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Button x:Name="btnModifierMagazine" Content="Modifier" HorizontalAlignment="Left" Margin="540,296,0,0" VerticalAlignment="Top" Width="155" Click="btnModifierMagazine_Click"/>
+                    <Button x:Name="btnAjouterMagazine" Content="Ajouter" HorizontalAlignment="Left" Margin="540,272,0,0" VerticalAlignment="Top" Width="155" Click="btnAjouterMagazine_Click"/>
+                    <Button x:Name="btnSupprimerMagazine" Content="Supprimer" HorizontalAlignment="Left" Margin="540,321,0,0" VerticalAlignment="Top" Width="155" Height="20" Click="btnSupprimerMagazine_Click"/>
+                    <Label x:Name="lblPaiementMagazine" Content="Date de paiement" HorizontalAlignment="Left" Margin="524,156,0,0" VerticalAlignment="Top" Width="150"/>
+                    <DatePicker x:Name="dtpPaiementMagazine" HorizontalAlignment="Left" Margin="524,187,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Pigiste">
+                <Grid Background="#FFE5E5E5" VerticalAlignment="Top" Height="500">
+                    <DataGrid x:Name="dtgPigiste" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="255" AutoGenerateColumns="True" ItemsSource="{Binding}" SelectionChanged="dtgPigiste_SelectionChanged"/>
+                    <TextBox x:Name="txtNumPigiste" HorizontalAlignment="Left" Height="23" Margin="346,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="14.667" FontWeight="Bold" IsEnabled="False"/>
+                    <Label x:Name="labelNumPigiste" Content="Numéro de pigiste" HorizontalAlignment="Left" Margin="346,15,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtNomPigiste" HorizontalAlignment="Left" Height="23" Margin="346,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtPrenomPigiste" HorizontalAlignment="Left" Height="23" Margin="346,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblNomPigiste" Content="Nom" HorizontalAlignment="Left" Margin="346,65,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblPrenomPigiste" Content="Prénom" HorizontalAlignment="Left" Margin="346,119,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblNumPigiste" Content="Numéro de pigiste" HorizontalAlignment="Left" Margin="346,15,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtCPPigiste" HorizontalAlignment="Left" Height="23" Margin="544,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtVillePigiste" HorizontalAlignment="Left" Height="23" Margin="544,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblCPPigiste" Content="Code Postal" HorizontalAlignment="Left" Margin="545,65,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblVillePigiste" Content="Ville" HorizontalAlignment="Left" Margin="545,119,0,0" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtAdressePigiste" HorizontalAlignment="Left" Height="23" Margin="544,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblAdressePigiste" Content="Adresse" HorizontalAlignment="Left" Margin="545,15,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Button x:Name="btnModifierPigiste" Content="Modifier" HorizontalAlignment="Left" Margin="540,296,0,0" VerticalAlignment="Top" Width="155" Click="btnModifierPigiste_Click"/>
+                    <Button x:Name="btnAjouterPigiste" Content="Ajouter" HorizontalAlignment="Left" Margin="540,272,0,0" VerticalAlignment="Top" Width="155" Click="btnAjouterPigiste_Click" />
+                    <Button x:Name="btnSupprimerPigiste" Content="Supprimer" HorizontalAlignment="Left" Margin="540,321,0,0" VerticalAlignment="Top" Width="155" Height="20" Click="btnSupprimerPigiste_Click"/>
+                    <TextBox x:Name="txtNumSecuPigiste" HorizontalAlignment="Left" Height="23" Margin="346,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblSecuPigiste" Content="Sécurité Sociale" HorizontalAlignment="Left" Margin="346,191,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblMailPigiste" Content="Email" HorizontalAlignment="Left" Margin="545,191,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtMailPigiste" HorizontalAlignment="Left" Height="23" Margin="545,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+                    <TextBox x:Name="txtContratCadrePigiste" HorizontalAlignment="Left" Height="23" Margin="346,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <Label x:Name="lblContratCadre" Content="Contrat Cadre" HorizontalAlignment="Left" Margin="346,247,0,0" VerticalAlignment="Top" Width="150"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
